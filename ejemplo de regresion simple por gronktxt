@@ -1,0 +1,106 @@
+
+R version 4.4.3 (2025-02-28 ucrt) -- "Trophy Case"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64
+
+R es un software libre y viene sin GARANTIA ALGUNA.
+Usted puede redistribuirlo bajo ciertas circunstancias.
+Escriba 'license()' o 'licence()' para detalles de distribucion.
+
+R es un proyecto colaborativo con muchos contribuyentes.
+Escriba 'contributors()' para obtener más información y
+'citation()' para saber cómo citar R o paquetes de R en publicaciones.
+
+Escriba 'demo()' para demostraciones, 'help()' para el sistema on-line de ayuda,
+o 'help.start()' para abrir el sistema de ayuda HTML con su navegador.
+Escriba 'q()' para salir de R.
+
+> joudata("Journals")
+Error en joudata("Journals"): no se pudo encontrar la función "joudata"
+> journals <- Journals[, c("subs", "price")]
+Error: objeto 'Journals' no encontrado
+> journals$citeprice <- Journals$price/Journals$citations
+Error: objeto 'Journals' no encontrado
+> summary(journals)
+Error: objeto 'journals' no encontrado
+> ls()
+character(0)
+> search()
+[1] ".GlobalEnv"        "package:stats"     "package:graphics" 
+[4] "package:grDevices" "package:utils"     "package:datasets" 
+[7] "package:methods"   "Autoloads"         "package:base"     
+> variable1 <- 5
+> print variablel
+Error: unexpected symbol en "print variablel"
+> print
+function (x, ...) 
+UseMethod("print")
+<bytecode: 0x0000026f1a579660>
+<environment: namespace:base>
+> uno <- 23
+> list
+function (...)  .Primitive("list")
+> print uno
+Error: unexpected symbol en "print uno"
+> print(uno)
+[1] 23
+> lm(
++ 
++ )
+Error en terms.formula(formula, data = data): 
+  el argumento no es un modelo válido
+> # Paso 1: Crear datos ficticios
+> horas_estudio <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)  # Variable independiente (X)
+> calificacion <- c(50, 55, 60, 65, 70, 75, 80, 85, 90, 95)  # Variable dependiente (Y)
+> datos <- data.frame(horas_estudio, calificacion)  # Crear un data frame
+> 
+> # Paso 2: Explorar los datos
+> print(datos)  # Ver los datos
+   horas_estudio calificacion
+1              1           50
+2              2           55
+3              3           60
+4              4           65
+5              5           70
+6              6           75
+7              7           80
+8              8           85
+9              9           90
+10            10           95
+> plot(horas_estudio, calificacion, main = "Horas de Estudio vs Calificación", 
++      xlab = "Horas de Estudio", ylab = "Calificación", pch = 16, col = "blue")  # Gráfico de dispersión
+> 
+> # Paso 3: Ajustar el modelo de regresión lineal simple
+> modelo <- lm(calificacion ~ horas_estudio, data = datos)
+> 
+> # Paso 4: Resumen del modelo
+> summary(modelo)
+
+Call:
+lm(formula = calificacion ~ horas_estudio, data = datos)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-4.155e-15 -1.582e-15  9.575e-16  1.032e-15  4.688e-15 
+
+Coefficients:
+               Estimate Std. Error   t value Pr(>|t|)    
+(Intercept)   4.500e+01  1.848e-15 2.434e+16   <2e-16 ***
+horas_estudio 5.000e+00  2.979e-16 1.678e+16   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 2.706e-15 on 8 degrees of freedom
+Multiple R-squared:      1,     Adjusted R-squared:      1 
+F-statistic: 2.817e+32 on 1 and 8 DF,  p-value: < 2.2e-16
+
+Aviso:
+In summary.lm(modelo) : essentially perfect fit: summary may be unreliable
+> 
+> # Paso 5: Visualizar la línea de regresión
+> abline(modelo, col = "red")  # Añadir la línea al gráfico de dispersión
+> 
+> # Paso 6: Predicción (opcional)
+> nuevo_dato <- data.frame(horas_estudio = 5.5)  # Predecir para 5.5 horas
+> prediccion <- predict(modelo, newdata = nuevo_dato)
+> print(paste("Predicción para 5.5 horas:", prediccion))

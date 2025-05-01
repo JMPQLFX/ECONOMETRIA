@@ -1,0 +1,67 @@
+<head>
+    <title>Análisis de wage1.RData</title>
+</head>
+<body>
+    <h1>Análisis de wage1.RData</h1>
+    <p>A continuación se presentan los comandos de R y resultados para calcular promedios y totales del archivo wage1.RData.</p>
+</body>
+</html>
+!DOCTYPE html>
+<html>
+<head>
+    <title>Análisis de wage1.RData</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: navy; }
+        h2 { color: darkgreen; }
+        code { background-color: #f0f0f0; padding: 2px 5px; }
+        pre { background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Análisis de wage1.RData</h1>
+    <p>Este documento muestra la sintaxis de comandos en R para analizar el archivo <strong>wage1.RData</strong>, ubicado en <code>C:\Users\52713\Documents\JMPQ</code>. Incluye promedios y totales de las variables.</p>
+
+    <h2>1. Cargar los datos</h2>
+    <p>Comandos usados para cargar el archivo:</p>
+    <pre>
+setwd("C:/Users/52713/Documents/JMPQ")  # Establece el directorio de trabajo
+load("wage1.RData")                     # Carga el archivo
+names(data)                             # Muestra las columnas: "educ", "wage", "exper", "female", "married", "smsa"
+    </pre>
+
+    <h2>2. Calcular promedios</h2>
+    <p>Sintaxis para calcular promedios con <code>mean()</code>:</p>
+    <pre>
+promedio_wage <- mean(data$wage, na.rm = TRUE)    # Salario por hora
+promedio_educ <- mean(data$educ, na.rm = TRUE)    # Años de educación
+promedio_female <- mean(data$female, na.rm = TRUE) # Proporción de mujeres
+print("Salario:", promedio_wage)
+print("Educación:", promedio_educ)
+print("Proporción mujeres:", promedio_female)
+    </pre>
+    <p>Resultados:</p>
+    <ul>
+        <li>Salario por hora: 5.896103</li>
+        <li>Años de educación: 12.56274</li>
+        <li>Proporción de mujeres: 0.4287072</li>
+    </ul>
+
+    <h2>3. Totalizar mujeres</h2>
+    <p>Sintaxis para sumar la variable <code>female</code> con <code>sum()</code>:</p>
+    <pre>
+total_female <- sum(data$female, na.rm = TRUE)  # Número de mujeres
+total_obs <- nrow(data)                        # Total de observaciones
+total_male <- total_obs - total_female         # Número de hombres
+print("Mujeres:", total_female)
+print("Hombres:", total_male)
+    </pre>
+    <p>Resultados:</p>
+    <ul>
+        <li>Mujeres: 225</li>
+        <li>Hombres: 301</li>
+        <li>Total de observaciones: 526</li>
+    </ul>
+</body>
+</html>
+
